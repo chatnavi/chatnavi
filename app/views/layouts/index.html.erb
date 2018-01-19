@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>Ventie</title>
+    <%= stylesheet_link_tag "application", media: "all",
+                                           "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div id="page">
+
+
+
+
+
+      <header id="header" class="site-header">
+
+        <nav id="navbar" class="site-navbar navbar navbar-static-top" role="navigation">
+
+          <div class="container">
+     <%= link_to root_path, id: "Ventie" do %>
+        <span id="Ventie" class="">Ventie</span>
+      <% end %>
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+              <ul id="navigation" class="nav navbar-nav navbar-right">
+<% if user_signed_in? %>
+
+
+            <li id="fat-menu">
+           <%= link_to messages_path, method: :get do %>
+            <i class="fa fa-comment-o fa-2x mb20 ml27"></i>
+           <% end %>
+            </li>
+
+
+            <li id="fat-menu">
+           <%= link_to applies_path, method: :get do %>
+            <i class="fa fa-bell fa-2x mb20"></i>
+            <% end %>
+            </li>
+
+
+            <li id="fat-menu" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                Account <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><%= link_to "プロフィール", current_user, method: :get %></li>
+                <li><%= link_to "設定", edit_user_path(current_user), method: :get %></li>
+                <li><%= link_to "Sign out", destroy_user_session_path , method: :delete %></li>
+              </ul>
+            </li>
+
+  <% else %>
+
+                <li class="active"><a href="#header" class="current">Home</a></li>
+                <li><a href="#features">Ventieとは？丸山ラフ</a></li>
+                <li><a href="#portfolio">イベントスタッフを募集する</a></li>
+                <li><a href="#testimonials">イベントスタッフの仕事をする</a></li>
+                <li><a>sign</a></li>
+<% end %>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+
+
+
+      <main id="main" class="site-main">
+
+<% if user_signed_in? %>
+
+
+
+<div class="jobBtn">
+  <div class="center">
+    <%= link_to "イベント主催者様は、こちらから登録", new_job_path, class: "btn btn-large" %>
+  </div>
+
+  <div class="center">
+    <%= link_to "イベントスタッフの希望の方は、こちらから登録", jobs_path, class: "btn btn-large" %>
+  </div>
+</div><!-- /.jobBtn -->
+
+
+
+      <footer id="footer" class="site-footer">
+        <div class="container">
+          <div class="copyright"><p>© 2015 Ventie, Inc.</p></div>
+        </div>
+      </footer>
+
+
+<% else %>
+
+
+
+<!-- ここからがログインしていないユーザーが見るview -->
+
+<div class="header_img">
+    <img class="header-image" src="http://kokucheese.com/images/upload/55774_photo1.jpg?20121002223553">
+    <p>
+        <span class="top_header_catch01 F36304">Ventie</span>
+        <span class="top_header_catch02">Ventieはイベントスタッフの<br />マッチングプラットフォームです。</span>
+    </p>
+</div>
+
+
+
+        <section class="section section-center section-hilite section-cta">
+          <div class="container">
+            <h2 class="section-title"><span>さぁ、新規登録してイベントを楽しくしよう！</span></h2>
+            <div class="main-action row">
+          <div class="center">
+          <%= link_to "さっそく、登録！", new_user_path, class: "btn-large btn " %>
+          </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" class="section section-center section-features">
+          <div class="container">
+            <h2 class="section-title"><span>Ventieとは？</span></h2>
+            <div class="row">
+
+              <div>
+              <p>Ventieは、イベントスタッフを頼みたい人とイベントスタッフをしたい人をマッチングするサービスです。<br>イベント主催者とイベントスタッフを結ぶプラットフォームサービスです。<p>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+        <section id="portfolio" class="section section-portfolio">
+        <div class="container">
+
+<h2 class="section-title"><span>イベントスタッフを募集する流れ</span></h2>
+
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">イベントを登録する<br>イベントの登録を行います。イベントの作業日、作業内容、報酬額などを書いてスタッフを募集します。</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">イベントスタッフを雇う<br>イベントのスタッフを実際に雇い、イベントをこなす。</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">報酬を支払う<br>ユーザーの評価を行い、報酬を支払います。</div>
+                </div>
+
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">完了</div>
+                </div>
+
+            </div>
+  </div>
+</div>
+       </section>
+
+        <!-- Project Modal -->
+        <div class="modal fade" id="project-modal" tabindex="-1" role="dialog" aria-labelledby="project-modal-label" aria-hidden="true">
+          <div class="modal-dialog">
+
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="project-modal-label"></h4>
+              </div>
+              <div class="modal-body">
+                <article class="single-project">
+                  <div class="project-thumbnail">
+                    <div id="project-thumbnail-carousel-1" class="carousel slide" data-ride="carousel">
+                      <div class="carousel-inner">
+                        <div class="item active"><img src="http://placehold.it/800x600" /></div>
+                        <div class="item"><img src="http://placehold.it/800x600" /></div>
+                        <div class="item"><img src="http://placehold.it/800x600" /></div>
+                      </div>
+                      <ol class="carousel-indicators">
+                        <li data-target="#project-thumbnail-carousel-1" data-slide-to="0" class="active"></li>
+                        <li data-target="#project-thumbnail-carousel-1" data-slide-to="1"></li>
+                        <li data-target="#project-thumbnail-carousel-1" data-slide-to="2"></li>
+                      </ol>
+                      <a class="left carousel-control" href="#project-thumbnail-carousel-1" data-slide="prev"><span class="fa fa-chevron-left"></span></a>
+                      <a class="right carousel-control" href="#project-thumbnail-carousel-1" data-slide="next"><span class="fa fa-chevron-right"></span></a>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <button type="button" class="btn btn-block btn-primary">Launch Project</button>
+                      <ul class="list-unstyled project-info">
+                        <li><strong>Type</strong> <span class="pull-right">Web Design</span></li>
+                        <li><strong>Client</strong> <span class="pull-right">Google</span></li>
+                        <li><strong>Year</strong> <span class="pull-right">2014</span></li>
+                      </ul>
+                    </div>
+                    <div class="col-md-8">
+                      <p>Suspendisse varius nisl nunc. Aenean in dictum nibh. Nullam congue facilisis purus porta ullamcorper. Aenean in consequat sapien. Cras orci augue, ultricies at luctus congue, dapibus sed magna. Vivamus consequat commodo pharetra. Maecenas sed tincidunt mi, quis accumsan nisi. Praesent ac porttitor massa. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Curabitur in bibendum tellus, vitae imperdiet mauris.</p>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <section id="portfolio" class="section section-portfolio">
+        <div class="container">
+
+<h2 class="section-title"><span>イベントスタッフの仕事をする流れ</span></h2>
+
+            <div class="row bs-wizard" style="border-bottom:0;">
+                <div class="col-xs-3 bs-wizard-step complete">
+                  <div class="text-center bs-wizard-stepnum">Step 1</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">イベントを探す<br>スタッフをしたいイベントを探し、日程や条件を確認し、働きたいという希望を出す</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step complete"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 2</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">希望の承認をもらう<br>希望を出したイベントから承認をもらうとその仕事にスタッフ参加する事が出来ます。働きましょう。</div>
+                </div>
+                
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 3</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">報酬をもらう<br>働いた分の報酬をもらう事が出来ます。この際にイベントの主催者のreviewができます。自分も主催者からreviewをもらえます。</div>
+                </div>
+
+                <div class="col-xs-3 bs-wizard-step active"><!-- complete -->
+                  <div class="text-center bs-wizard-stepnum">Step 4</div>
+                  <div class="progress"><div class="progress-bar"></div></div>
+                  <a href="#" class="bs-wizard-dot"></a>
+                  <div class="bs-wizard-info text-center">完了</div>
+                </div>
+
+            </div>
+  </div>
+</div>
+       </section>
+
+        <section class="section section-center section-hilite section-cta">
+          <div class="container">
+            <h2 class="section-title"><span>新規登録！</span></h2>
+            <div class="main-action row">
+          <div class="center">
+          <%= link_to "さっそく、登録！", new_user_path, class: "btn-large btn " %>
+          </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+
+
+
+<!-- ここまでがログインしていないユーザーが見るview -->
+
+
+      <footer class="site-footer">
+        <div class="container">
+          <div class="copyright"><p>© 2015 Ventie, Inc.</p></div>
+        </div>
+      </footer>
+
+
+<% end %>
+
+
+
+
+      </main>
+
+    </div>
+
+    <div class="scroll-to-top" data-spy="affix" data-offset-top="200"><a href="#page" class="smooth-scroll"><i class="fa fa-arrow-up"></i></a></div>
+
+  </body>
+</html>
